@@ -1,10 +1,9 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+
 
 public class WelcomePanel extends JFrame {
     public static void main(String[] args) {
-        WelcomePanel frameTabel = new WelcomePanel();
+        WelcomePanel panel=new WelcomePanel();
     }
 
     JLabel welcome = new JLabel("Welcome REENA \n :)");
@@ -13,7 +12,7 @@ public class WelcomePanel extends JFrame {
     WelcomePanel() {
         super("Welcome");
         setSize(300, 200);
-        setLocation(1500, 100);
+        setLocation(900,300);
         panel.setLayout(null);
         welcome.setBounds(70, 50, 150, 60);
         panel.add(welcome);

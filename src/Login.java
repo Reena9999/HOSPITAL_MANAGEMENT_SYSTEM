@@ -5,21 +5,37 @@ public class Login extends JFrame
 {
     public static void main(String args[])
     {
-        JFrame f = new JFrame("BanK Login");
-        JTextField u_name = new JTextField("ENTER NAME ON CARD");
-        u_name.setBounds(60,50,150,20);
-        JPasswordField password = new JPasswordField("ENTER PIN");
-        password.setBounds(60,90,150,20);
-        JButton done = new JButton("Login");
-        done.setBounds(110,150,80,20);
-        JPanel p = new JPanel();
-        f.add(done);
-        f.add(u_name);
-        f.add(password);
-        f.setSize(300,300);
-        f.setLayout(null);
-        f.setVisible(true);
-        actionlogin(f, done, u_name, password);
+        JFrame frame1 = new JFrame("Log In");
+        frame1.setLocation(900,300);
+        
+        frame1.setSize(300,300);
+        frame1.setLayout(null);
+
+        JLabel userNameLabel=new JLabel("Unique ID");
+        userNameLabel.setBounds(60,40,150,20);
+
+        JTextField u_name = new JTextField();
+        u_name.setBounds(60,60,150,20);
+
+        JLabel passwordLabel=new JLabel("Password");
+        passwordLabel.setBounds(60,90,150,20);
+
+        JPasswordField password = new JPasswordField();
+        password.setBounds(60,110,150,20);
+
+        JButton login = new JButton("Login");
+        login.setBounds(110,150,80,20);
+        
+        frame1.add(userNameLabel);
+        frame1.add(u_name);
+
+        frame1.add(password);
+        frame1.add(passwordLabel);
+        
+        frame1.add(login);
+       
+        frame1.setVisible(true);
+        actionlogin(frame1, login, u_name, password);
     }
     
     public static void actionlogin(JFrame f,JButton done,JTextField u_name,JTextField password)
