@@ -32,7 +32,7 @@ public class Login extends JFrame
                 String pw = password.getText();
                 if (name.equals("REENA") && pw.equals("6601"))
                 {
-                    swings2 ch = new swings2();
+                    WelcomePanel ch = new WelcomePanel();
                     ch.setVisible(true);
                     f.dispose();
                 }
@@ -45,4 +45,6 @@ public class Login extends JFrame
         });
     }
 }
+
+
 
