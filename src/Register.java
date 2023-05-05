@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.sql.*;
+import java.awt.Container;
 import java.util.Calendar;
 
 public class Register extends JFrame {
@@ -18,6 +19,7 @@ public class Register extends JFrame {
         firstNameLabel.setBounds(60, 40, 200, 20);
 
         JTextField firstNameTextField = new JTextField(20);
+        firstNameTextField.setName("firstNameTextField");
         firstNameTextField.setBounds(150, 40, 200, 20);
 
         // Create name label and text field
@@ -25,6 +27,7 @@ public class Register extends JFrame {
         lastNameLabel.setBounds(60, 65, 200, 20);
 
         JTextField lastNameTextField = new JTextField(20);
+        lastNameTextField.setName("lastNameTextField");
         lastNameTextField.setBounds(150, 65, 200, 20);
 
 
@@ -33,9 +36,11 @@ public class Register extends JFrame {
         sexLabel.setBounds(60, 100, 200, 20);
 
         JRadioButton maleRadioButton = new JRadioButton("Male");
+        maleRadioButton.setName("maleRadioButton");
         maleRadioButton.setBounds(150, 100, 65, 20);
 
         JRadioButton femaleRadioButton = new JRadioButton("Female");
+        femaleRadioButton.setName("femaleRadioButton");
         femaleRadioButton.setBounds(250, 100, 200, 20);
 
         ButtonGroup sexGroup = new ButtonGroup();
@@ -51,6 +56,7 @@ public class Register extends JFrame {
         JSpinner.DateEditor editor = new JSpinner.DateEditor(DOB, "dd/MM/yyyy");
         DOB.setEditor(editor);
         DOB.setValue(Calendar.getInstance().getTime());
+        DOB.setName("DOB");
         DOB.setBounds(150, 130, 200, 20);
 
 
@@ -60,10 +66,12 @@ public class Register extends JFrame {
 
         String[] bloodGroups = { "A", "B", "AB", "O" };
         JComboBox<String> bloodGroupComboBox = new JComboBox<>(bloodGroups);
+        bloodGroupComboBox.setName("bloodGroupComboBox");
         bloodGroupComboBox.setBounds(150, 160, 50, 20);
 
         String[] RhGroups = { "+", "-" };
         JComboBox<String> RhGroupComboBox = new JComboBox<>(RhGroups);
+        RhGroupComboBox.setName("RhGroupComboBox");
         RhGroupComboBox.setBounds(200, 160, 50, 20);
 
 
@@ -72,6 +80,7 @@ public class Register extends JFrame {
         phNumberLabel.setBounds(60, 200, 200, 20);
 
         JTextField phNumberTextField = new JTextField(20);
+        phNumberTextField.setName("phNumberTextField");
         phNumberTextField.setBounds(150, 200, 200, 20);
 
 
@@ -80,6 +89,7 @@ public class Register extends JFrame {
         emailLabel.setBounds(60, 240, 200, 20);
 
         JTextField emailTextField = new JTextField(20);
+        emailTextField.setName("emailTextField");
         emailTextField.setBounds(150, 240, 200, 20);
 
 
@@ -88,6 +98,7 @@ public class Register extends JFrame {
         passwordLabel.setBounds(60, 270, 200, 20);
 
         JTextField passwordTextField = new JTextField(20);
+        passwordTextField.setName("passwordTextField");
         passwordTextField.setBounds(150, 270, 200, 20);
 
 
@@ -128,32 +139,16 @@ public class Register extends JFrame {
         registerFrame.setVisible(true);
     }
 
-    public static void actionRegister(JFrame frame, JPanel registerPanel) {
+    public static void actionRegister(JFrame registerFrame) {
+        JTextField firstNameTextField= (JTextField) registerFrame.getComponentByName("firstNameTextField");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/HospitalManagementSystem", "root", "94807279");
 
             PreparedStatement st = (PreparedStatement) connection.prepareStatement("insert into tblPatient(FirstName,LastName,PhNumber,Email,Sex,BloodGroup,Password) values(?,?) RegistraID from tblRegistras where FirstName=?");
-            // st.setString(1, userNameTextField.getText());
+            st.setString(1,firstNameTextField.getText());
 
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                // System.out.println(rs.next());
-                PreparedStatement st2 = (PreparedStatement) connection.prepareStatement(
-                        "Select FirstName, Password from tblRegistras where RegistraID=? and password=?");
-                // st2.setString(1, userNameTextField.getText());
-                // st2.setString(2, passwordTextField.getText());
-                ResultSet rs2 = st.executeQuery();
-                if (rs2.next()) {
-                    Home home = new Home();
-                    home.setVisible(true);
-                    frame.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect Username or Password");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Cannot Find Username");
-            }
+            st.executeQuery();
 
         } catch (SQLException | ClassNotFoundException sqlException) {
             sqlException.printStackTrace();
@@ -161,6 +156,6 @@ public class Register extends JFrame {
     }
 
     public static void main(String args[])throws Exception{
-        new Register();
+        
     }
 }

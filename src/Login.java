@@ -92,8 +92,8 @@ public class Login extends JFrame {
                         
                         ResultSet rs2 = st.executeQuery();
                         if(rs2.next()){
-                            Home ch = new Home();
-                            ch.setVisible(true);
+                            Home homeObject = new Home();
+                            homeObject.setVisible(true);
                             loginFrame.dispose();
                         }
                         else {
