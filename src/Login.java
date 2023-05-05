@@ -4,45 +4,77 @@ import java.sql.*;
 
 public class login extends JFrame {
     public static void main(String args[]) {
-        JFrame frame1 = new JFrame("Log In");
-        frame1.setLocation(900, 300);
+        JFrame loginFrame = new JFrame("Log In");
+        loginFrame.setLocation(900, 300);
+        loginFrame.setSize(300, 300);
+        loginFrame.setLayout(null);
 
-        frame1.setSize(300, 300);
-        frame1.setLayout(null);
 
+        //Create User Name label and TextField
         JLabel userNameLabel = new JLabel("Unique ID");
-        userNameLabel.setBounds(60, 40, 150, 20);
+        userNameLabel.setBounds(60, 40, 200, 20);
 
-        JTextField u_name = new JTextField();
-        u_name.setBounds(60, 60, 150, 20);
+        JTextField userNameTextField = new JTextField();
+        userNameTextField.setBounds(60, 60, 170, 20);
 
+
+        //Create password label and textField
         JLabel passwordLabel = new JLabel("Password");
-        passwordLabel.setBounds(60, 90, 150, 20);
+        passwordLabel.setBounds(60, 90, 170, 20);
 
         JPasswordField passwordField = new JPasswordField();
-        passwordField.setBounds(60, 110, 150, 20);
-
-        JButton login = new JButton("Login");
-        login.setBounds(110, 150, 80, 20);
-
-        frame1.add(userNameLabel);
-        frame1.add(u_name);
-
-        frame1.add(passwordLabel);
-        frame1.add(passwordField);
+        passwordField.setBounds(60, 110, 170, 20);
 
 
-        frame1.add(login);
+        //Create login Button
+        JButton loginButton = new JButton("Login");
+        loginButton.setBounds(60, 150, 80, 20);
 
-        frame1.setVisible(true);
-        actionlogin(frame1, login, u_name, passwordField);
+
+        //Create register button
+        JButton registerButton=new JButton("Sign Up");
+        registerButton.setBounds(150, 150, 80, 20);
+
+
+        //Adding components to the Frame
+        loginFrame.add(userNameLabel);
+        loginFrame.add(userNameTextField);
+
+        loginFrame.add(passwordLabel);
+        loginFrame.add(passwordField);
+
+        loginFrame.add(loginButton);
+        loginFrame.add(registerButton);
+
+        loginFrame.setVisible(true);
+
+
+        //call function to listen for button click
+        actionlogin(loginFrame, loginButton, userNameTextField, passwordField);
+        actionSignUp(loginFrame,registerButton);
     }
 
-    public static void actionlogin(JFrame f, JButton done, JTextField u_name, JTextField passwordField) {
-        done.addActionListener(new ActionListener() {
+
+    public static void actionSignUp(JFrame frame,JButton register){
+        //add a ActionListener to invoke a function on registerButton click
+        register.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //open the register window
+                Register signUp=new Register();
+                signUp.setVisible(true);
+
+                //close the login window
+                frame.dispose();
+            }
+        });
+    }
+
+
+    public static void actionlogin(JFrame loginFrame, JButton loginButton, JTextField userNameTextField, JTextField passwordField) {
+        loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String password = passwordField.getText();
-                String name = u_name.getText();
+                String name = userNameTextField.getText();
                 
                 try {
                     Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/HospitalManagementSystem","root", "94807279");
@@ -52,24 +84,26 @@ public class login extends JFrame {
 
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
-                        // System.out.println(rs.next());
+                        String uniqueID = rs.getString("RegistraID");
+
                         PreparedStatement st2 = (PreparedStatement) connection.prepareStatement("Select FirstName, Password from tblRegistras where RegistraID=? and password=?");
-                        st2.setString(1, name);
+                        st2.setString(1, uniqueID);
                         st2.setString(2, password);
+                        
                         ResultSet rs2 = st.executeQuery();
                         if(rs2.next()){
-                            WelcomePanel ch = new WelcomePanel();
+                            Home ch = new Home();
                             ch.setVisible(true);
-                            f.dispose();
+                            loginFrame.dispose();
                         }
                         else {
                             JOptionPane.showMessageDialog(null, "Incorrect Username or Password");
-                            u_name.requestFocus();
+                            userNameTextField.requestFocus();
                         }
                     }
                     else {
                         JOptionPane.showMessageDialog(null, "Cannot Find Username");
-                        u_name.requestFocus();
+                        userNameTextField.requestFocus();
                     }                        
                      
                 } catch (SQLException sqlException) {
