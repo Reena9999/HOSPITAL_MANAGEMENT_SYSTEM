@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
 
-public class Login extends JFrame {
+public class login extends JFrame {
     public static void main(String args[]) {
         JFrame frame1 = new JFrame("Log In");
         frame1.setLocation(900, 300);
