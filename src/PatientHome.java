@@ -1,16 +1,15 @@
 import javax.swing.*;
 
-public class PatientLogin {
+public class PatientHome {
     private JFrame frame;
     private JPanel mainPanel;
     private JTextField firstNameField, lastNameField, idField;
     private JButton bookAppointmentButton, searchButton;
     private JComboBox<String> dateComboBox, timeComboBox, doctorComboBox;
 
-    public PatientLogin() {
+    public PatientHome(String uniqueID) {
         mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-
         
         JLabel firstNameLabel = new JLabel("First Name:");
         firstNameField = new JTextField(20);
@@ -75,15 +74,9 @@ public class PatientLogin {
             String date = (String) dateComboBox.getSelectedItem();
             String time = (String) timeComboBox.getSelectedItem();
             String doctor = (String) doctorComboBox.getSelectedItem();
-
-
         }
     }
 
     private void search() {
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new PatientLogin());
     }
 }
