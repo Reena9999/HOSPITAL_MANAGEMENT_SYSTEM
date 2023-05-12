@@ -26,7 +26,7 @@ import java.util.Calendar;
 
 /**
  *
- * @author HP
+ * @Reena
  */
 public class RegistraHome extends javax.swing.JFrame {
 
@@ -769,6 +769,11 @@ public class RegistraHome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    /**
+    FUNCTION TO SET ALL THE VALUES OF COMBO BOXES FROM DATA IN THE DATABASE
+    */
     private void initialize() {
         Calendar currentCalendar = Calendar.getInstance();
         DateChooser1.setMinSelectableDate(currentCalendar.getTime());
@@ -817,6 +822,11 @@ public class RegistraHome extends javax.swing.JFrame {
         }
     }
 
+    
+    
+    /**
+    LOOK FOR AVAILABLE APPOINTMENTS WITH SERACH CONSTRAINT SPECIALIST TO VIST and DATE
+    */
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
         String[] columnNames = {"Doctor Name", "Available Date", "Available From", "Available To"};
@@ -856,6 +866,11 @@ public class RegistraHome extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_searchButtonActionPerformed
 
+    
+    
+    /**
+    FUNCTION TO RETREIVE DATA FROM THE DATABASE
+    */
     private String[][] getData() {
 
         String[][] retreivedData = new String[100][5];
@@ -904,6 +919,11 @@ public class RegistraHome extends javax.swing.JFrame {
         return retreivedData;
     }
 
+    
+    
+    /**
+    ADD NEW DOCTOR
+    */
     private void addDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDoctorActionPerformed
         // TODO add your handling code here
         String sp = (String) doctorSpecialization.getSelectedItem();
@@ -947,6 +967,11 @@ public class RegistraHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addDoctorActionPerformed
 
+    
+    
+    /**
+    ADD A NEW REGISTRA
+    */
     private void addRegistraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRegistraActionPerformed
         // TODO add your handling code here:
         if (registraFirstNameField.getText().equals("") || registraLastNameField.getText().equals("") || registraPhNumberField.getText().equals("") || registraPasswordField.getText().equals("")) {
@@ -973,6 +998,11 @@ public class RegistraHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addRegistraActionPerformed
 
+    
+    
+    /**
+    MAKE TABLES CLICKABLE TO SCHEDULE BOOKINGS ON SELECTING A ROW
+    */
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
         int selectedRow = jTable2.getSelectedRow();
@@ -986,6 +1016,11 @@ public class RegistraHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTable2MouseClicked
 
+    
+    
+    /**
+    FUNCTION TO VIEW ALL SCHEDULED BOOKINGS
+    */
     private void ViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewButtonActionPerformed
         // TODO add your handling code here:
         String formattedDate = "";
@@ -1038,10 +1073,12 @@ public class RegistraHome extends javax.swing.JFrame {
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-
-
     }//GEN-LAST:event_ViewButtonActionPerformed
 
+    
+    /**
+    FUNCTION TO LOOKUP DOCTOR BASED ON DOCTOR ID AND RETREIVE THEIR DETAILS
+    */
     private void searchDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDoctorActionPerformed
         // TODO add your handling code here:
         try {
@@ -1057,11 +1094,14 @@ public class RegistraHome extends javax.swing.JFrame {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-
         }
+    }
 
-    }//GEN-LAST:event_searchDoctorActionPerformed
-
+    
+    
+    /**
+    FUNCTION TO POST AVAILABLE APPOINTMENT SLOTS FOR A DOCTOR AS A REGISTRA
+    */
     private void addAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAvailabilityActionPerformed
         // TODO add your handling code here:
         Date selectedDate = jDateChooser1.getDate();
@@ -1093,10 +1133,14 @@ public class RegistraHome extends javax.swing.JFrame {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Enter data in all required fields");
-
         }
     }//GEN-LAST:event_addAvailabilityActionPerformed
 
+    
+    
+    /**
+    FUNCTION TO VIEW PATIENT'S MEDICAL HISTORY AS A REGISTRA
+    */
     private void viewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHistoryActionPerformed
         // TODO add your handling code here:
         String selectedPatient = (String) patient2.getSelectedItem();
@@ -1132,6 +1176,11 @@ public class RegistraHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_viewHistoryActionPerformed
 
+    
+    
+    /**
+    FUNCTION TO PRINT PATIENT'S MEDICAL HISTORY DATA INTO A FILE AS A REGISTRA
+    */
     private void printHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printHistoryActionPerformed
         // TODO add your handling code here:
         try {
@@ -1161,6 +1210,11 @@ public class RegistraHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_printHistoryActionPerformed
 
+    
+    
+    /**
+    FUNCTION TO VIEW REPORT OF DOCTOR/PATIENT AS PER REGISTRA'S CHOICE
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String[][] retreivedData = new String[100][2];
@@ -1195,6 +1249,11 @@ public class RegistraHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
+    /**
+    LOGOUT from registra portal
+    */
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
         // TODO add your handling code here:
         int result = JOptionPane.showConfirmDialog(null,"Are you sure, you wish to log out?","Confirm log out", JOptionPane.YES_NO_OPTION);
@@ -1204,6 +1263,11 @@ public class RegistraHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logOutActionPerformed
 
+    
+    
+    /** 
+    Recieve number from number picker and convert the values to it's corresponding  date in 24 hour clock
+    */
     private String getTime(int hour, int minutes) {
 
         String time = "";
@@ -1223,6 +1287,11 @@ public class RegistraHome extends javax.swing.JFrame {
         return time;
     }
 
+    
+    
+    /** 
+    ACTION TO PERFORM ON SCHEDULING AN APPOINTMENT FOR A PATIENT
+    */
     private void scheduleAppointment(String name, String availableDate, String startTime, String endTime) {
         JFrame scheduleAppointmentFrame = new JFrame();
         scheduleAppointmentFrame.setTitle("Schedule appointment");
@@ -1356,6 +1425,7 @@ public class RegistraHome extends javax.swing.JFrame {
 
     }
 
+    
     /**
      * @param args the command line arguments
      */
