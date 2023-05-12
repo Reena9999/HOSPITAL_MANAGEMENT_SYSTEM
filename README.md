@@ -33,5 +33,10 @@ Doctors have the functionalities of
 # Database ERD
 ![ERD](https://user-images.githubusercontent.com/118504536/235449554-beda071c-a617-46c1-8241-cec8a26557ce.png)
 
-  
-
+![7](https://github.com/Reena9999/HOSPITALMANAGEMENTSYSTEM/assets/118504536/92c1d183-f9b9-4f16-b3b6-44c3f3e6fd25)
+![1](https://github.com/Reena9999/HOSPITALMANAGEMENTSYSTEM/assets/118504536/6d714348-1d11-459e-b2cd-8ff0d45d9f10)
+![2](https://github.com/Reena9999/HOSPITALMANAGEMENTSYSTEM/assets/118504536/5eeab2d9-d489-4c64-ab00-a4bc6b8a0ecc)
+![3](https://github.com/Reena9999/HOSPITALMANAGEMENTSYSTEM/assets/118504536/398a5279-ac54-413e-8ff6-8c564c7a0737)
+![4](https://github.com/Reena9999/HOSPITALMANAGEMENTSYSTEM/assets/118504536/e67f8d4d-6f47-4093-a960-68417a6f6f40)
+![5](https://github.com/Reena9999/HOSPITALMANAGEMENTSYSTEM/assets/118504536/429ebde5-4570-4eec-b3b8-c91dec8b8339)
+![6](https://github.com/Reena9999/HOSPITALMANAGEMENTSYSTEM/assets/118504536/e48db8bc-5b75-4ce2-bbd0-f81c44b36084)
