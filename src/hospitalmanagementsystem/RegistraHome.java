@@ -6,6 +6,8 @@ package hospitalmanagementsystem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalTime;
@@ -51,6 +53,7 @@ public class RegistraHome extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Name = new javax.swing.JLabel();
         registraID = new javax.swing.JLabel();
+        logOut = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         TabPane = new javax.swing.JTabbedPane();
         viewBookingPane = new javax.swing.JPanel();
@@ -115,13 +118,19 @@ public class RegistraHome extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         addAvailability = new javax.swing.JButton();
         doctor2 = new javax.swing.JComboBox<>();
-        jPanel4 = new javax.swing.JPanel();
+        patientHistory = new javax.swing.JPanel();
         patient2 = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         viewHistory = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         printHistory = new javax.swing.JButton();
+        Report = new javax.swing.JPanel();
+        userType = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -133,6 +142,13 @@ public class RegistraHome extends javax.swing.JFrame {
 
         registraID.setText("jLabel2");
 
+        logOut.setText("Log Out");
+        logOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -140,15 +156,22 @@ public class RegistraHome extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(registraID)
-                    .addComponent(Name))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(registraID)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Name)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logOut)
+                        .addGap(79, 79, 79))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
-                .addComponent(Name)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name)
+                    .addComponent(logOut))
                 .addGap(18, 18, 18)
                 .addComponent(registraID)
                 .addGap(17, 17, 17))
@@ -267,7 +290,7 @@ public class RegistraHome extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(specialisationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(26, 26, 26)
                         .addComponent(DateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +361,7 @@ public class RegistraHome extends javax.swing.JFrame {
                             .addComponent(doctorEmailField, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                             .addComponent(doctorSpecialization, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(doctorPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))))
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         addDoctorPaneLayout.setVerticalGroup(
             addDoctorPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,7 +434,7 @@ public class RegistraHome extends javax.swing.JFrame {
                             .addComponent(registraPhNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registraLastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registraPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(338, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
         addRegistraPaneLayout.setVerticalGroup(
             addRegistraPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -575,7 +598,7 @@ public class RegistraHome extends javax.swing.JFrame {
                         .addComponent(doctor2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(searchDoctor)))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         addDoctorAvailabilityLayout.setVerticalGroup(
             addDoctorAvailabilityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -603,10 +626,7 @@ public class RegistraHome extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -621,15 +641,15 @@ public class RegistraHome extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout patientHistoryLayout = new javax.swing.GroupLayout(patientHistory);
+        patientHistory.setLayout(patientHistoryLayout);
+        patientHistoryLayout.setHorizontalGroup(
+            patientHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientHistoryLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(patientHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(patientHistoryLayout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addGap(28, 28, 28)
                         .addComponent(patient2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -637,13 +657,13 @@ public class RegistraHome extends javax.swing.JFrame {
                         .addComponent(viewHistory)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(printHistory)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        patientHistoryLayout.setVerticalGroup(
+            patientHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientHistoryLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(patientHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(patient2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
                     .addComponent(viewHistory)
@@ -653,7 +673,63 @@ public class RegistraHome extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        TabPane.addTab("Patient History", jPanel4);
+        TabPane.addTab("Patient History", patientHistory);
+
+        userType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Patient" }));
+
+        jButton1.setLabel("View Report");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setText("Select");
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Users", "Frequency Count"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable4);
+
+        javax.swing.GroupLayout ReportLayout = new javax.swing.GroupLayout(Report);
+        Report.setLayout(ReportLayout);
+        ReportLayout.setHorizontalGroup(
+            ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addGroup(ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ReportLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel18)
+                        .addGap(18, 18, 18)
+                        .addComponent(userType, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap(245, Short.MAX_VALUE))
+        );
+        ReportLayout.setVerticalGroup(
+            ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel18))
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+
+        TabPane.addTab("Reports", Report);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -667,9 +743,9 @@ public class RegistraHome extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
+                .addGap(0, 22, Short.MAX_VALUE)
                 .addComponent(TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -841,49 +917,59 @@ public class RegistraHome extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        try {
 
-            String sqlCommand2 = "insert into tblDoctor(FirstName,LastName,PhNumber,email,specialisation,password) "
-                    + "values('" + doctorFirstNameField.getText()
-                    + "','" + doctorLastNameField.getText()
-                    + "','" + doctorPhNumberField.getText()
-                    + "','" + doctorEmailField.getText()
-                    + "','" + sp + "','"
-                    + doctorPasswordField.getText() + "')";
+        if (doctorFirstNameField.getText().equals("") || doctorLastNameField.getText().equals("") || doctorPhNumberField.getText().equals("") || doctorEmailField.getText().equals("") || doctorPasswordField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "All Details are required!");
 
-            int rowsChanged = dc.DC.st.executeUpdate(sqlCommand2);
-            if (rowsChanged > 0) {
-                JOptionPane.showMessageDialog(this, "Doctor Added");
-                doctorFirstNameField.setText("");
-                doctorLastNameField.setText("");
-                doctorPhNumberField.setText("");
-                doctorEmailField.setText("");
-                doctorPasswordField.setText("");
+        } else {
+            try {
+                String sqlCommand2 = "insert into tblDoctor(FirstName,LastName,PhNumber,email,specialisation,password) "
+                        + "values('" + doctorFirstNameField.getText()
+                        + "','" + doctorLastNameField.getText()
+                        + "','" + doctorPhNumberField.getText()
+                        + "','" + doctorEmailField.getText()
+                        + "','" + sp + "','"
+                        + doctorPasswordField.getText() + "')";
+
+                int rowsChanged = dc.DC.st.executeUpdate(sqlCommand2);
+                if (rowsChanged > 0) {
+                    JOptionPane.showMessageDialog(this, "Doctor Added");
+                    doctorFirstNameField.setText("");
+                    doctorLastNameField.setText("");
+                    doctorPhNumberField.setText("");
+                    doctorEmailField.setText("");
+                    doctorPasswordField.setText("");
+                }
+                initialize();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_addDoctorActionPerformed
 
     private void addRegistraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRegistraActionPerformed
         // TODO add your handling code here:
-        try {
-            String sqlCommand = "insert into tblRegistras(FirstName,LastName,PhNumber,password) "
-                    + "values('" + registraFirstNameField.getText()
-                    + "','" + registraLastNameField.getText()
-                    + "','" + registraPhNumberField.getText()
-                    + "','" + registraPasswordField.getText() + "')";
+        if (registraFirstNameField.getText().equals("") || registraLastNameField.getText().equals("") || registraPhNumberField.getText().equals("") || registraPasswordField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "All Details are required!");
+        } else {
+            try {
+                String sqlCommand = "insert into tblRegistras(FirstName,LastName,PhNumber,password) "
+                        + "values('" + registraFirstNameField.getText()
+                        + "','" + registraLastNameField.getText()
+                        + "','" + registraPhNumberField.getText()
+                        + "','" + registraPasswordField.getText() + "')";
 
-            int rowsChanged = dc.DC.st.executeUpdate(sqlCommand);
-            if (rowsChanged > 0) {
-                JOptionPane.showMessageDialog(this, "Registra Added");
-                registraFirstNameField.setText("");
-                registraLastNameField.setText("");
-                registraPhNumberField.setText("");
-                registraPasswordField.setText("");
+                int rowsChanged = dc.DC.st.executeUpdate(sqlCommand);
+                if (rowsChanged > 0) {
+                    JOptionPane.showMessageDialog(this, "Registra Added");
+                    registraFirstNameField.setText("");
+                    registraLastNameField.setText("");
+                    registraPhNumberField.setText("");
+                    registraPasswordField.setText("");
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_addRegistraActionPerformed
 
@@ -971,6 +1057,7 @@ public class RegistraHome extends javax.swing.JFrame {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+
         }
 
     }//GEN-LAST:event_searchDoctorActionPerformed
@@ -1013,20 +1100,24 @@ public class RegistraHome extends javax.swing.JFrame {
     private void viewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHistoryActionPerformed
         // TODO add your handling code here:
         String selectedPatient = (String) patient2.getSelectedItem();
-        if (!selectedPatient.equals("")) {
+        String[][] retreivedData = new String[100][6];
+
+        if (selectedPatient.equals("")) {
+        } else {
             try {
-                PreparedStatement st1 = (PreparedStatement) dc.DC.connection.prepareStatement(" select hist.Date, Concat(doctor.FirstName,\" \",doctor.LastName),sp.specialisation,hist.Symptoms from tblScheduledBooking as hist,tblpatient as patient,tblspecialists as sp,tbldoctor as doctor where hist.PatientID=? and patient.patientID=hist.PatientID and doctor.DOCID=hist.DiagnosingDoctor and sp.specialisation=(select specialisation from tblspecialists where doctor.specialisation=specialisationID and hist.Status=1)");
+
+                PreparedStatement st1 = (PreparedStatement) dc.DC.connection.prepareStatement(" select doc.FirstName,doc.LastName, sc.ScheduledDate,sp.specialisation,sc.Symptoms from tblDoctor as doc,tblScheduledBooking as sc, tblspecialists as sp where doc.DOCID=sc.DOCID and sc.PatientID=? and sp.specialisation=(Select specialisation from tblspecialists where specialisationID=doc.specialisation)");
                 st1.setString(1, selectedPatient);
 
                 ResultSet result = st1.executeQuery();
-                String[][] retreivedData = new String[100][6];
+
                 if (result.next()) {
                     int row = 0;
                     do {
-                        retreivedData[row][0] = result.getString(1);
-                        retreivedData[row][1] = result.getString(2);
-                        retreivedData[row][2] = result.getString(3);
-                        retreivedData[row][3] = result.getString(4) ;
+                        retreivedData[row][0] = result.getString(1) + " " + result.getString(2);
+                        retreivedData[row][1] = result.getString(3);
+                        retreivedData[row][2] = result.getString(4);
+                        retreivedData[row][3] = result.getString(5);
                         row++;
                     } while (result.next());
 
@@ -1036,14 +1127,82 @@ public class RegistraHome extends javax.swing.JFrame {
                     jTable3.setModel(model);
                 }
             } catch (SQLException ex) {
-
+                System.out.println(ex.getMessage());
             }
         }
     }//GEN-LAST:event_viewHistoryActionPerformed
 
     private void printHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printHistoryActionPerformed
         // TODO add your handling code here:
+        try {
+            File file = new File(UID + "_Medical_History.txt");
+            FileWriter writer = new FileWriter(file);
+
+            writer.write("Patient Name: " + "\t");
+            // Retrieve the table data
+            int rowCount = jTable3.getRowCount();
+            int columnCount = jTable3.getColumnCount();
+
+            for (int row = 0; row < rowCount; row++) {
+                for (int col = 0; col < columnCount; col++) {
+
+                    Object value = jTable3.getValueAt(row, col);
+                    if (col == 0 && (jTable3.getValueAt(row, col) == null)) {
+                        break;
+                    } else {
+                        writer.write(value + "\t");
+                    }
+                }
+                writer.write("\n");
+            }
+            writer.close();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_printHistoryActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String[][] retreivedData = new String[100][2];
+        String ut = (String) userType.getSelectedItem();
+        String sqlCommand = "";
+        try {
+            if (ut.equalsIgnoreCase("doctor")) {
+                sqlCommand = "select doc.FirstName,doc.LastName, count(sc.DOCID) from tblScheduledBooking as sc, tblDoctor as doc where doc.DOCID=sc.DOCID group by sc.DOCID order by count(sc.DOCID) desc";
+
+            } else if (ut.equalsIgnoreCase("patient")) {
+                sqlCommand = "select patient.FirstName,patient.LastName, count(sc.PatientID) from tblScheduledBooking as sc, tblPatient as patient where patient.PatientID=sc.PatientID group by sc.PatientID order by count(sc.PatientID) desc";
+            }
+            PreparedStatement st1 = (PreparedStatement) dc.DC.connection.prepareStatement(sqlCommand);
+            ResultSet result = st1.executeQuery();
+
+            if (result.next()) {
+                int row = 0;
+                do {
+                    retreivedData[row][0] = result.getString(1) + " " + result.getString(2);
+                    retreivedData[row][1] = result.getString(3);
+                    row++;
+                } while (result.next());
+
+                String[] columnNames = {ut, "Frequency"};
+                Object[][] data = retreivedData;
+                DefaultTableModel model = new DefaultTableModel(data, columnNames);
+                jTable4.setModel(model);
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(null,"Are you sure, you wish to log out?","Confirm log out", JOptionPane.YES_NO_OPTION);
+        if(result==JOptionPane.YES_OPTION){
+            this.dispose();
+            new Login().setVisible(true);
+        }
+    }//GEN-LAST:event_logOutActionPerformed
 
     private String getTime(int hour, int minutes) {
 
@@ -1112,8 +1271,13 @@ public class RegistraHome extends javax.swing.JFrame {
                             PreparedStatement st1 = (PreparedStatement) dc.DC.connection.prepareStatement(
                                     "select doc.DOCID,sc.PatientToAttend from tblDoctor as doc,tbldoctorAvailability as sc "
                                     + "where doc.FirstName=? and doc.LastName=? and doc.Specialisation=(Select specialisationID from tblSpecialists where specialisation=?)"
-                                    + " and doc.DOCID=sc.DOCID and sc.availableDate=? and (sc.availabileStartTime-availabileEndTime)>(15*60) and sc.PatientToAttend>0");
+                                    + " and doc.DOCID=sc.DOCID and sc.availableDate=? and sc.PatientToAttend>0");
                             String[] arr = name.split(" ");
+
+                            for (int i = 0; i < arr.length; i++) {
+                                System.out.println(arr[i]);
+                            }
+
                             st1.setString(1, arr[0]);
                             st1.setString(2, arr[1]);
                             st1.setString(3, (String) specialisationComboBox.getSelectedItem());
@@ -1125,7 +1289,7 @@ public class RegistraHome extends javax.swing.JFrame {
                                 DOCID = rs.getString(1);
                                 PatientToAttend = Integer.parseInt(rs.getString(2));
                             }
-
+                            System.out.println("DOCID: " + DOCID);
                             PreparedStatement st = (PreparedStatement) dc.DC.connection.prepareStatement(
                                     "insert into tblscheduledbooking(PatientID,DOCID,ScheduledDate,ScheduledTime,Registra) values(?,?,?,?,?)");
                             st.setString(1, patientID);
@@ -1134,6 +1298,7 @@ public class RegistraHome extends javax.swing.JFrame {
                             st.setString(4, startTime);
                             st.setString(5, Integer.toString(UID));
                             int rowsAffected = st.executeUpdate();
+                            System.out.println(rowsAffected);
                             if (rowsAffected > 0) {
                                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
                                 LocalTime stime = LocalTime.parse(startTime, formatter);
@@ -1249,6 +1414,7 @@ public class RegistraHome extends javax.swing.JFrame {
     private javax.swing.JLabel RegistraFirstName;
     private javax.swing.JLabel RegistraPhNumberlabel;
     private javax.swing.JLabel RegistraPhNumberlabel1;
+    private javax.swing.JPanel Report;
     private javax.swing.JTabbedPane TabPane;
     private javax.swing.JButton ViewButton;
     private javax.swing.JButton addAvailability;
@@ -1267,6 +1433,7 @@ public class RegistraHome extends javax.swing.JFrame {
     private javax.swing.JTextField doctorPasswordField;
     private javax.swing.JTextField doctorPhNumberField;
     private javax.swing.JComboBox<String> doctorSpecialization;
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1277,6 +1444,7 @@ public class RegistraHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1288,14 +1456,17 @@ public class RegistraHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JButton logOut;
     private javax.swing.JComboBox<String> patient2;
     private javax.swing.JSpinner patientAttend;
+    private javax.swing.JPanel patientHistory;
     private javax.swing.JComboBox<String> patientId;
     private javax.swing.JButton printHistory;
     private javax.swing.JTextField registraFirstNameField;
@@ -1307,6 +1478,7 @@ public class RegistraHome extends javax.swing.JFrame {
     private javax.swing.JButton searchButton;
     private javax.swing.JButton searchDoctor;
     private javax.swing.JComboBox<String> specialisationComboBox;
+    private javax.swing.JComboBox<String> userType;
     private javax.swing.JPanel viewBookingPane;
     private javax.swing.JButton viewHistory;
     // End of variables declaration//GEN-END:variables

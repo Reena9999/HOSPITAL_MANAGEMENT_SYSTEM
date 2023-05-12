@@ -1,5 +1,3 @@
-import Project.ConnectionProvider;
-import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
 /*
@@ -210,8 +208,7 @@ public class updatePatientRecord extends javax.swing.JFrame {
         // TODO add your handling code here:
         String patientID = jTextField1.getText();
         try{
-             Connection con = ConnectionProvider.getCon();
-            Statement st = con.createStatement();
+            Statement st = dc.DC.connection.createStatement();
             
             String query = "select * from patient where patientID='"+patientID+"'";
             ResultSet rs = st.executeQuery(query);
@@ -245,8 +242,7 @@ public class updatePatientRecord extends javax.swing.JFrame {
         String anyMajorDisease = jTextField8.getText();
         
         try{
-            Connection con = ConnectionProvider.getCon();
-            Statement st = con.createStatement();
+            Statement st = dc.DC.connection.createStatement();
             st.executeUpdate("update patient set name='"+name+"',contactNumber='"+contactNumber+"',age='"+age+"',gender='"+gender+"',bloodGroup='"+bloodGroup+"',address='"+address+"',anyMajorDisease='"+anyMajorDisease+"' where patientID = '"+patientID+"'");
             JOptionPane.showMessageDialog(null,"Successfully Updated");
             setVisible(false);

@@ -130,7 +130,7 @@ public class DoctorsLogin extends javax.swing.JFrame {
         
         int a = JOptionPane.showConfirmDialog(null,"Do you really want to logout?","Select",JOptionPane.YES_NO_OPTION);
         if(a == 0){
-            setVisible(false);
+            this.dispose();
             new Login().setVisible(true);
         }
     }
@@ -172,7 +172,7 @@ public class DoctorsLogin extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
-        new UpdatepatientRecord().setVisible(true);
+        new updatePatientRecord().setVisible(true);
     }
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
