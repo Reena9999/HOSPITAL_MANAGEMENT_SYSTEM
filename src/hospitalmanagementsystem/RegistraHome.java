@@ -1183,7 +1183,7 @@ public class RegistraHome extends javax.swing.JFrame {
     */
     private void printHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printHistoryActionPerformed
         // TODO add your handling code here:
-        try {
+       try {
             File file = new File(UID + "_Medical_History.txt");
             FileWriter writer = new FileWriter(file);
 
