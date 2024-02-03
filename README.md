@@ -30,5 +30,8 @@ Doctors have the functionalities of
 * view their bookings for the day  
 * view patients medical records  
 
-# Database ERD
+## Database ERD
 ![ERD](https://user-images.githubusercontent.com/118504536/235449554-beda071c-a617-46c1-8241-cec8a26557ce.png)
+
+## CODE
+To access the code follow the path in the repository src>hospitalmanagementsystem
