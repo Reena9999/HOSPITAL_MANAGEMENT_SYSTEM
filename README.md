@@ -1,8 +1,8 @@
 # General Overview
 
-This is a scaled down medical appointment booking system.  
+This is a scaled-down medical appointment booking system.
 
-The system exists to allow doctors to easily post their availability, time and date, for patients to view. Based on the Doctors' availability, Patients can make booking. Registras help fecilitate the functions of both patients and doctors.
+The system allows doctors to easily post their availability, time and date for patients to view. Based on the Doctors' availability, Patients can make bookings. Registrars help facilitate the functions of both patients and doctors.
 
 The system has three user types:    
 1. DOCTORS    
