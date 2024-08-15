@@ -16,7 +16,7 @@ public class DC {
     public static Statement st;
     static{
     try {
-         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/HospitalManagementSystem", "root", "94807279");
+         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/HospitalManagementSystem", "root", "********");
          st = connection.createStatement();
 }
     catch(SQLException exception){
